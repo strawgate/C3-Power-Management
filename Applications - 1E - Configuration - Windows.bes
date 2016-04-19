@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Applications - 1E - Configuration - Windows</Title>
+		<Description>1E Configuration </Description>
+		<Relevance>windows of operating system</Relevance>
+		<Relevance>exists key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2016-04-18</SourceReleaseDate>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Tue, 19 Apr 2016 02:09:56 +0000</Value>
+		</MIMEField>
+		<Domain>BESC</Domain>
+		<Property Name="1E - Version - Windows" ID="1">value "ProductVersion" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
+		<Property Name="1E - System Tray Visible - Windows" ID="2">value "SystemTray" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
+		<Property Name="1E - Policy Number - Windows" ID="3">value "PolicyNumber" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerPolicy" of native registry</Property>
+		<Property Name="1E - Disk Idle Timeout on AC - Windows" ID="4">(if (it = "0") then ("Disabled") else (it)) of (value "DiskAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Disk Idle Timeout on Battery - Windows" ID="5">(if (it = "0") then ("Disabled") else (it)) of (value "DiskDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Hibernate Timeout on AC - Windows" ID="6">(if (it = "0") then ("Disabled") else (it)) of (value "HibernateAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Hibernate Timeout on Battery- Windows" ID="7">(if (it = "0") then ("Disabled") else (it)) of (value "HibernateDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Monitor Timeout on AC - Windows" ID="8">(if (it = "0") then ("Disabled") else (it)) of (value "MonitorAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Monitor Timeout on DC - Windows" ID="9">(if (it = "0") then ("Disabled") else (it)) of (value "MonitorDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Password Wakeup - Windows" ID="10">(if (it = "0") then ("Disabled") else ("Enabled")) of (value "PasswordOnWakeup" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Standby Timeout on AC - Windows" ID="11">(if (it = "0") then ("Disabled") else (it)) of (value "StandbyAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Standby Timeout on Battery- Windows" ID="12">(if (it = "0") then ("Disabled") else (it)) of (value "StandbyDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="1E - Wakeup Agent Port - Windows" ID="13">value "AgentTCP_Port" of key "HKEY_LOCAL_MACHINE\Software\1E\WakeUpAgt" of native registry</Property>
+		<Property Name="1E - Service URL - Windows" ID="14">value "ServiceUrl" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\Reporting" of native registry</Property>
+	</Analysis>
+</BES>
