@@ -2,14 +2,13 @@
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Analysis>
 		<Title>Applications - 1E - Configuration - Windows</Title>
-		<Description>1E Configuration </Description>
+		<Description><![CDATA[Learn more about this analysis online:  <a href='http://bigfix.me/cdb/analysis/2996940'>http://bigfix.me/cdb/analysis/2996940</a><br /><br />1E Configuration ]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Relevance>exists key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Relevance>
-		<Source>Internal</Source>
-		<SourceReleaseDate>2016-04-18</SourceReleaseDate>
+
 		<MIMEField>
 			<Name>x-fixlet-modification-time</Name>
-			<Value>Tue, 19 Apr 2016 02:09:56 +0000</Value>
+			<Value>Tue, 19 Apr 2016 19:33:12 +0000</Value>
 		</MIMEField>
 		<Domain>BESC</Domain>
 		<Property Name="1E - Version - Windows" ID="1">value "ProductVersion" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
@@ -28,3 +27,4 @@
 		<Property Name="1E - Service URL - Windows" ID="14">value "ServiceUrl" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\Reporting" of native registry</Property>
 	</Analysis>
 </BES>
+

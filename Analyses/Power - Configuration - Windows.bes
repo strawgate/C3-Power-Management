@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Power - Configuration - Windows</Title>
+		<Description>Information regarding the current power policy. </Description>
+		<Relevance>windows of operating system</Relevance>
+		<Relevance>not in proxy agent context</Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2016-04-21</SourceReleaseDate>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 22 Apr 2016 04:12:47 +0000</Value>
+		</MIMEField>
+		<Domain>BESC</Domain>
+		<Property Name="Power - Active Policy - Windows" ID="1">preceding text of first "%00" of following text of last "," of (value "FriendlyName" of (key (value "ActivePowerScheme" of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry) as string)</Property>
+		<Property Name="Power - Defined Policies - Windows" ID="2">(preceding text of first "%00" of following text of last "," of it) of ((values "FriendlyName" of keys of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry) as string)</Property>
+		<Property Name="Power - Lid Close Action on AC - Windows" ID="3">preceding text of first "%00" of following text of last "," of (value "FriendlyName" of key (value "ACSettingIndex" of key (name of (key (value "ActivePowerScheme" of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry) as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\4f971e89-eebd-4455-a8de-9e59040e7347\5ca83367-6e45-459f-a27b-476b1d01c936\DefaultPowerSchemeValues" of native registry as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\4f971e89-eebd-4455-a8de-9e59040e7347\5ca83367-6e45-459f-a27b-476b1d01c936" of native registry as string)</Property>
+		<Property Name="Power - Lid Close Action on DC - Windows" ID="4">preceding text of first "%00" of following text of last "," of (value "FriendlyName" of key (value "DCSettingIndex" of key (name of (key (value "ActivePowerScheme" of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry) as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\4f971e89-eebd-4455-a8de-9e59040e7347\5ca83367-6e45-459f-a27b-476b1d01c936\DefaultPowerSchemeValues" of native registry as string) of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\4f971e89-eebd-4455-a8de-9e59040e7347\5ca83367-6e45-459f-a27b-476b1d01c936" of native registry as string)</Property>
+	</Analysis>
+</BES>
+
