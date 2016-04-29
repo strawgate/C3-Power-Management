@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
 		<Title>Config - Power Policy - Set to Power Saver - Windows</Title>
@@ -12,10 +13,6 @@
 		<SourceSeverity></SourceSeverity>
 		<CVENames></CVENames>
 		<SANSID></SANSID>
-		<MIMEField>
-			<Name>x-fixlet-modification-time</Name>
-			<Value>Fri, 29 Apr 2016 00:18:56 +0000</Value>
-		</MIMEField>
 		<Domain>BESC</Domain>
 		<DefaultAction ID="Action1">
 			<Description>
@@ -29,4 +26,3 @@ wait powercfg -s "a1841308-3541-4fab-bc81-f71556f20b4a"</ActionScript>
 		</DefaultAction>
 	</Fixlet>
 </BES>
-

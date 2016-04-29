@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
 		<Title>Config - Power Policy - Set to Balanced - Windows</Title>
@@ -12,10 +13,6 @@
 		<SourceSeverity></SourceSeverity>
 		<CVENames></CVENames>
 		<SANSID></SANSID>
-		<MIMEField>
-			<Name>x-fixlet-modification-time</Name>
-			<Value>Fri, 29 Apr 2016 00:19:16 +0000</Value>
-		</MIMEField>
 		<Domain>BESC</Domain>
 		<DefaultAction ID="Action1">
 			<Description>
@@ -29,4 +26,3 @@ wait powercfg -s "381b4222-f694-41f0-9685-ff5bb260df2e"</ActionScript>
 		</DefaultAction>
 	</Fixlet>
 </BES>
-
