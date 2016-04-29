@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Config - Power Policy - Set to High Performance - Windows</Title>
+		<Description>Sets the Windows Power Policy to High Performance. </Description>
+		<Relevance><![CDATA[Windows of operating system and version of operating system > "5.1"]]></Relevance>
+		<Relevance>string value of selects "ElementName from win32_powerplan where isActive = True" of wmi "Root\CIMV2\power" != "High Performance"</Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-04-23</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Fri, 29 Apr 2016 00:19:06 +0000</Value>
+		</MIMEField>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">// Enter your action script here
+
+wait powercfg -s "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c"</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>
+
