@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Power - Configuration - Mac</Title>
+		<Description><![CDATA[&lt;enter a description of the analysis here&gt; ]]></Description>
+		<Relevance>mac of operating system</Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2016-05-02</SourceReleaseDate>
+		<Domain>BESC</Domain>
+		<Property Name="Power - Wake On LAN on AC - Mac" ID="1">if (integer "Wake On LAN" of dictionary "AC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist" = 1) then ("Enabled") else ("Disabled")</Property>
+		<Property Name="Power - Wake On LAN on DC - Mac" ID="2">if (integer "Wake On LAN" of dictionary "DC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist" = 1) then ("Enabled") else ("Disabled")</Property>
+		<Property Name="Power - Disk Sleep Timer on AC - Mac" ID="3">integer "Disk Sleep Timer" of dictionary "AC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist"</Property>
+		<Property Name="Power - Disk Sleep Timer on DC - Mac" ID="4">integer "Disk Sleep Timer" of dictionary "DC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist"</Property>
+		<Property Name="Power - Standby Timer on AC - Mac" ID="5">integer "Standby Delay" of dictionary "AC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist"</Property>
+		<Property Name="Power - Standby Timer on DC - Mac" ID="6">integer "Standby Delay" of dictionary "DC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist"</Property>
+		<Property Name="Power - Standby on AC - Mac" ID="7">if (integer "Standby Enabled" of dictionary "AC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist" = 1) then ("Enabled") else ("Disabled")</Property>
+		<Property Name="Power - Standby on DC - Mac" ID="8">if (integer "Standby Enabled" of dictionary "DC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist" = 1) then ("Enabled") else ("Disabled")</Property>
+		<Property Name="Power - Default GPU on AC - Mac" ID="9">(if (it = 0) then ("Integrated") else (if (it = 1) then ("Discrete") else "Auto") )of (integer "GPUSwitch" of dictionary "AC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist")</Property>
+		<Property Name="Power - Default GPU on DC - Mac" ID="10">(if (it = 0) then ("Integrated") else (if (it = 1) then ("Discrete") else "Auto") )of (integer "GPUSwitch" of dictionary "DC Power" of dictionary "Custom Profile" of dictionary of file "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist")</Property>
+	</Analysis>
+</BES>
