@@ -1,2 +1,3 @@
-# Poor-Man-s-Power-Management
-Poor Man's Power Management
+# C3 Power Management
+
+C3 Power Management
