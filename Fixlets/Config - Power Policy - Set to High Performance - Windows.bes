@@ -3,7 +3,8 @@
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
 		<Title>Config - Power Policy - Set to High Performance - Windows</Title>
-		<Description>Sets the Windows Power Policy to High Performance. </Description>
+		<Description><![CDATA[Sets the Windows Power Policy to High Performance. 
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance><![CDATA[Windows of operating system and version of operating system > "5.1"]]></Relevance>
 		<Relevance>string value of selects "ElementName from win32_powerplan where isActive = True" of wmi "Root\CIMV2\power" != "High Performance"</Relevance>
 		<Category></Category>

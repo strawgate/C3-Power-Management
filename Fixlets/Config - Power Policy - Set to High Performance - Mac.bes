@@ -3,8 +3,10 @@
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
 		<Title>Config - Power Policy - Set to High Performance - Mac</Title>
-		<Description><![CDATA[&lt;enter a description of the problem and the corrective action here&gt; ]]></Description>
-		<Relevance>true</Relevance>
+		<Description><![CDATA[<P>This Fixlet modifies the Power Policy on the device.&nbsp;We are soliciting feedback on the best way to configure these.</P>
+<P>If you have thoughts please reply here: <A href="https://github.com/strawgate/C3-Power-Management/issues/4">https://github.com/strawgate/C3-Power-Management/issues/4</A></P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>mac of operating system</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>

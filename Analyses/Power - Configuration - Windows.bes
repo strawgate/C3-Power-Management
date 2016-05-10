@@ -3,7 +3,8 @@
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Analysis>
 		<Title>Power - Configuration - Windows</Title>
-		<Description>Information regarding the current power policy. </Description>
+		<Description><![CDATA[Information regarding the current power policy. 
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Relevance>not in proxy agent context</Relevance>
 		<Source>Internal</Source>
