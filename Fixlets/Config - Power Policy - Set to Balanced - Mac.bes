@@ -2,9 +2,11 @@
 
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Config - Power Policy - Set to Power Saver - Mac</Title>
-		<Description><![CDATA[&lt;enter a description of the problem and the corrective action here&gt; ]]></Description>
-		<Relevance>true</Relevance>
+		<Title>Config - Power Policy - Set to Balanced - Mac</Title>
+		<Description><![CDATA[<P>This Fixlet modifies the Power Policy on the device.&nbsp;We are soliciting feedback on the best way to configure these.</P>
+<P>If you have thoughts please reply here: <A href="https://github.com/strawgate/C3-Power-Management/issues/4">https://github.com/strawgate/C3-Power-Management/issues/4</A></P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>Mac of Operating System</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>
@@ -22,9 +24,9 @@
 			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">// Enter your action script here
 
   wait pmset -c displaysleep 20
-  wait pmset -b displaysleep 3
+  wait pmset -b displaysleep 5
   wait pmset -c disksleep 30
-  wait pmset -b disksleep 15
+  wait pmset -b disksleep 20
   wait pmset -c sleep 60
   wait pmset -b sleep 15</ActionScript>
 			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>

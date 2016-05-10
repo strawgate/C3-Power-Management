@@ -27,6 +27,7 @@
   wait pmset -b disksleep 20
   wait pmset -c sleep 60
   wait pmset -b sleep 15</ActionScript>
+			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>
 		</DefaultAction>
 	</Fixlet>
 </BES>
