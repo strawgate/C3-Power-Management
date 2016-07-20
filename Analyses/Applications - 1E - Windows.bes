@@ -3,9 +3,9 @@
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Analysis>
 		<Title>Applications - 1E - Windows</Title>
-		<Description><![CDATA[Learn more about this analysis online:  <a href='http://bigfix.me/cdb/analysis/2996939'>http://bigfix.me/cdb/analysis/2996939</a><br /><br />Provides information regarding 1E installation status]]></Description>
+		<Description><![CDATA[Learn more about this analysis online: <A href="http://bigfix.me/cdb/analysis/2996939">http://bigfix.me/cdb/analysis/2996939</A><BR><BR>Provides information regarding 1E installation status ]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Domain>BESC</Domain>
-		<Property Name="1E - Installed - Windows" ID="1">exists key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
+		<Property Name="1E - Installed - Windows" ID="1" EvaluationPeriod="PT1H">exists key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
 	</Analysis>
 </BES>
