@@ -2,8 +2,9 @@
 
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Warning - Power Policy set to High Performance</Title>
-		<Description>The power policy on the target machine is set to High Performance. </Description>
+		<Title>Warning - Power Policy set to High Performance - Windows</Title>
+		<Description><![CDATA[The power policy on the target machine is set to High Performance. 
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance><![CDATA[Windows of operating system and version of operating system > "5.1"]]></Relevance>
 		<Relevance>(value "ActivePowerScheme" of key "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes" of native registry as string) = "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c"</Relevance>
 		<Category></Category>
