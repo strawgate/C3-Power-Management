@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Applications - 1E NightWatchman - Windows</Title>
+		<Description><![CDATA[<P>Provides information on the current 1E NightWatchman configuration.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>windows of operating system</Relevance>
+		<Relevance>exists key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Relevance>
+		<Domain>BESC</Domain>
+		<Property Name="NightWatchman - Version - Windows" ID="1" EvaluationPeriod="P1D">value "ProductVersion" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
+		<Property Name="NightWatchman - System Tray Visible - Windows" ID="2" EvaluationPeriod="P1D">value "SystemTray" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman" of native registry</Property>
+		<Property Name="NightWatchman - Policy Number - Windows" ID="3" EvaluationPeriod="P1D">value "PolicyNumber" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerPolicy" of native registry</Property>
+		<Property Name="NightWatchman - Disk Idle Timeout on AC - Windows" ID="4" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "DiskAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Disk Idle Timeout on Battery - Windows" ID="5" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "DiskDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Hibernate Timeout on AC - Windows" ID="6" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "HibernateAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Hibernate Timeout on Battery- Windows" ID="7" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "HibernateDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Monitor Timeout on AC - Windows" ID="8" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "MonitorAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Monitor Timeout on DC - Windows" ID="9" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "MonitorDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Password Wakeup - Windows" ID="10" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else ("Enabled")) of (value "PasswordOnWakeup" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Standby Timeout on AC - Windows" ID="11" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "StandbyAC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Standby Timeout on Battery- Windows" ID="12" EvaluationPeriod="P1D">(if (it = "0") then ("Disabled") else (it)) of (value "StandbyDC" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\PowerSettings" of native registry as string)</Property>
+		<Property Name="NightWatchman - Wakeup Agent Port - Windows" ID="13" EvaluationPeriod="P1D">value "AgentTCP_Port" of key "HKEY_LOCAL_MACHINE\Software\1E\WakeUpAgt" of native registry</Property>
+		<Property Name="NightWatchman - Service URL - Windows" ID="14" EvaluationPeriod="P1D">value "ServiceUrl" of key "HKEY_LOCAL_MACHINE\Software\1E\NightWatchman\Reporting" of native registry</Property>
+		<Property Name="NightWatchman - Advanced Sleepless Detection - Windows" ID="15" EvaluationPeriod="P1D">value "AdvancedSleeplessDetection" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Busy Process Detection - Windows" ID="16" EvaluationPeriod="P1D">value "BusyProcessDetection" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Countdown Timer - Windows" ID="17" EvaluationPeriod="P1D">value "CountdownSecs" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Debug Level - Windows" ID="18" EvaluationPeriod="P1D">value "Debug" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Log Off Action - Windows" ID="19" EvaluationPeriod="P1D">value "LogOffAction" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Monitor SCCM Jobs - Windows" ID="20" EvaluationPeriod="P1D">value "MonitorJobs" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Power Scheme Enforced - Windows" ID="21" EvaluationPeriod="P1D">value "PowerScheme" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Reporting - Windows" ID="22" EvaluationPeriod="P1D">value "Reporting" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Shutdown Action - Windows" ID="23" EvaluationPeriod="P1D">value "ShutdownAction" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - Shutdown Message - Windows" ID="24" EvaluationPeriod="P1D">value "ShutdownMsg" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+		<Property Name="NightWatchman - System Tray - Windows" ID="25" EvaluationPeriod="P1D">value "SystemTray" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry</Property>
+	</Analysis>
+</BES>
