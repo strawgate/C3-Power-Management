@@ -7,7 +7,7 @@
 <P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Relevance>exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) </Relevance>
-		<Relevance>value "LogOffAction" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string != "PASSIVE"</Relevance>
+		<Relevance>value "LogOffAction" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string as uppercase != "PASSIVE"</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>

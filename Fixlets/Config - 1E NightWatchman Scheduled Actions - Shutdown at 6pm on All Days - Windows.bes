@@ -14,9 +14,9 @@ or
 or
 /* Minutes */ exists (values whose (name of it ends with "Minutes") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 0)
 or
-/* Logoff Actions */ exists (values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != "ACTIVE")
+/* Logoff Actions */ exists (values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it as string as uppercase != "ACTIVE")
 or
-exists (values whose (name of it ends with "PowerdownAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != "POWEROFF")</Relevance>
+exists (values whose (name of it ends with "PowerdownAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it as string as uppercase != "POWEROFF")</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>
