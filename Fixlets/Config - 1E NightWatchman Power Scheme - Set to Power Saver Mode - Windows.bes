@@ -7,7 +7,7 @@
 <P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Relevance>exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) </Relevance>
-		<Relevance>not exists (key "PowerSettings" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (value "DiskAC" of it = 60 and value "DiskDC" of it = 5 and value "hibernateac" of it = 0 and value "hibernatedc" of it = 0 and value "monitorac" of it = 20 and value "monitordc" of it = 10 and value "standbyac" of it = 20 and value "standbydc" of it = 10)</Relevance>
+		<Relevance>not exists (key "PowerSettings" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (value "DiskAC" of it = 15 and value "DiskDC" of it = 5 and value "hibernateac" of it = 0 and value "hibernatedc" of it = 0 and value "monitorac" of it = 20 and value "monitordc" of it = 10 and value "standbyac" of it = 20 and value "standbydc" of it = 10)</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>
