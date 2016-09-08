@@ -8,11 +8,15 @@
 <P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Relevance>exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) </Relevance>
-		<Relevance>/* Days */ (set of (preceding text of first "Logoff" of it) of  names of values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) != set of ("Monday";"Tuesday";"Wednesday";"Thursday";"Friday")</Relevance>
-		<Relevance>/* Hours */ exists (values whose (name of it ends with "Hour") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 18)</Relevance>
-		<Relevance>/* Minutes */ exists (values whose (name of it ends with "Minutes") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 0)</Relevance>
-		<Relevance>/* Logoff Actions */ exists (values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != "ACTIVE")</Relevance>
-		<Relevance>exists (values whose (name of it ends with "PowerdownAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != "POWEROFF")</Relevance>
+		<Relevance>/* Days */ (set of (preceding text of first "Logoff" of it) of  names of values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) != set of ("Monday";"Tuesday";"Wednesday";"Thursday";"Friday")
+or
+/* Hours */ exists (values whose (name of it ends with "Hour") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 18)
+or
+/* Minutes */ exists (values whose (name of it ends with "Minutes") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 0)
+or
+/* Logoff Actions */ exists (values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != "ACTIVE")
+or
+exists (values whose (name of it ends with "PowerdownAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != "POWEROFF")</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>
