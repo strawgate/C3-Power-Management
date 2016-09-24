@@ -15,6 +15,6 @@
 		<Property Name="Power - Wake Requests - Windows" ID="2" EvaluationPeriod="P1D">(it, next line of it) of lines containing "[" of file "energy-requests.txt" of folder "temp" of windows folder</Property>
 		<Property Name="Power - Efficiency Errors - Windows" ID="3" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Error']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
 		<Property Name="Power - Efficiency Warnings - Windows" ID="4" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Warning']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
-		<Property Name="Power - Efficiency Information - Windows" ID="5" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Informational']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
+		<Property Name="Power - Last Efficiency Check - Windows" ID="6" EvaluationPeriod="P1D">modification time of file "energy-report.xml" of folder "temp" of windows folder</Property>
 	</Analysis>
 </BES>
