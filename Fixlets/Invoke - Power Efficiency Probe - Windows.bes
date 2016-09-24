@@ -2,8 +2,9 @@
 
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Invoke - Power Effeciency Probe - Windows</Title>
-		<Description><![CDATA[&lt;enter a description of the problem and the corrective action here&gt; ]]></Description>
+		<Title>Invoke - Power Efficiency Probe - Windows</Title>
+		<Description><![CDATA[<P>Invokes PowerCFG on the Endpoint to print out diagnostic information.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>windows of operating system</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
