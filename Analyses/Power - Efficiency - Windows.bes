@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Power - Efficiency - Windows</Title>
+		<Description><![CDATA[<P>This anaysis reads from the power effiency probe and reports the results.</P>
+<P>"Power - Efficiency Report Results - Windows" reports Windows-identified power management warnings.</P>
+<P>"Power - Wake Requests - Windows" reports components preventing Windows from sleeping.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>windows of operating system</Relevance>
+		<Relevance>exists file "energy-report.html" of folder "temp" of windows folder</Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2016-09-23</SourceReleaseDate>
+		<Domain>BESC</Domain>
+		<Property Name="Power - Wake Requests - Windows" ID="2" EvaluationPeriod="P1D">(it, next line of it) of lines containing "[" of file "energy-requests.txt" of folder "temp" of windows folder</Property>
+		<Property Name="Power - Efficiency Errors - Windows" ID="3" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Error']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
+		<Property Name="Power - Efficiency Warnings - Windows" ID="4" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Warning']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
+		<Property Name="Power - Efficiency Information - Windows" ID="5" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Informational']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
+	</Analysis>
+</BES>

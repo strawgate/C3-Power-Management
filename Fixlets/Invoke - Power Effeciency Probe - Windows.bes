@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Invoke - Power Effeciency Probe - Windows</Title>
+		<Description><![CDATA[&lt;enter a description of the problem and the corrective action here&gt; ]]></Description>
+		<Relevance>windows of operating system</Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-09-23</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell"><![CDATA[action uses wow64 redirection {not x64 of operating system}
+
+delete __createfile
+delete run.bat
+
+createfile until _end_
+cd "{pathname of windows folder}\temp"
+powercfg -energy 
+powercfg -requests > "energy-requests.txt"
+_end_
+
+move __createfile run.bat
+
+wait run.bat]]></ActionScript>
+			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>
+		</DefaultAction>
+	</Fixlet>
+</BES>
