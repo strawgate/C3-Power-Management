@@ -2,7 +2,7 @@
 
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Invoke - 1E NightWatchman Sleep Now - Windows</Title>
+		<Title>Invoke - 1E NightWatchman Standby Now - Windows</Title>
 		<Description><![CDATA[<P>This Fixlet uses 1E NightWatchman to sleep the system.</P>
 <P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>windows of operating system</Relevance>
@@ -25,7 +25,7 @@
 
 parameter "1ECLI"="{pathname of file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) }"
 
-waithidden "{parameter "1ECLI"}" -standbynow</ActionScript>
+runhidden "{parameter "1ECLI"}" -standbynow -CountdownSecs=90</ActionScript>
 			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>
 		</DefaultAction>
 	</Fixlet>

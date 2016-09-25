@@ -25,7 +25,7 @@
 
 parameter "1ECLI"="{pathname of file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) }"
 
-waithidden "{parameter "1ECLI"}" -shutdownnow</ActionScript>
+runhidden "{parameter "1ECLI"}" -shutdownnow -CountdownSecs=90</ActionScript>
 			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>
 		</DefaultAction>
 	</Fixlet>
