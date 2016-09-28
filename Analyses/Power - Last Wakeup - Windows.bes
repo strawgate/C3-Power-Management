@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Power - Last Wakeup - Windows</Title>
+		<Description><![CDATA[Provides information on the last system wakeup for Windows. 
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>windows of operating system</Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2016-09-27</SourceReleaseDate>
+		<Domain>BESC</Domain>
+		<Property Name="Power - Last Wakeup Reason - Windows" ID="1" EvaluationPeriod="PT1H">tuple string item (string value of selects "WakeUpType from Win32_ComputerSystem" of wmi as integer) of ("Reserved, Other, Unknown, APM Timer, Modem Ring, LAN Remote, Power Switch, PCI PME#, AC Power Restored")</Property>
+	</Analysis>
+</BES>
