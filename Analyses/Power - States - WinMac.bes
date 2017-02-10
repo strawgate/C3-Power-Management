@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Power - States - Win\Mac</Title>
+		<Description><![CDATA[<P>This Analysis provides Power State information for supported platforms.</P>
+<P>You must enable the Power History inspectors via the <STRONG>Fixlet</STRONG>: "Config - BigFix Power Tracking - Enable Inspectors - Windows" for this analysis to be relevant and report data. Data will only exist starting from the time the Power History inspectors have been enabled.</P>
+<P>This Analysis provides current power information:</P>
+<UL>
+<LI>Current Monitor State 
+<LI>Current System State</LI></UL>
+<P>This Analysis provides power information from yesterday:</P>
+<UL>
+<LI>Active Time 
+<LI>Idle Time 
+<LI>Logged Off Time 
+<LI>Monitor Off Time 
+<LI>Off Time</LI></UL>
+<P>This Analysis also provides power information covering the total power history:</P>
+<UL>
+<LI>Active Percentage 
+<LI>Idle Percentage 
+<LI>Logged Off Percentage 
+<LI>Monitor Off Percentage 
+<LI>Off Percentage</LI></UL>
+<P>The total power history goes back two weeks by default. There may be fewer than two weeks of history if you have only recently enabled the BigFix Power Management inspectors.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>exists values whose (it = "1") of settings "_BESClient_PowerHistory_EnablePowerHistory" of client </Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2017-02-03</SourceReleaseDate>
+		<Domain>BESC</Domain>
+		<Property Name="Power - Last Idle Time - Win\Mac" ID="3" EvaluationPeriod="PT5M">ends of ranges of last system intervals in idle state of power history</Property>
+		<Property Name="Power - Last Monitor Off Time - Win\Mac" ID="4" EvaluationPeriod="PT30M">ends of ranges of last monitor intervals in monitor off state of power history</Property>
+		<Property Name="Power - Last Active Time - Win\Mac" ID="5" EvaluationPeriod="PT5M">ends of ranges of last system intervals in active state of power history</Property>
+		<Property Name="Power - Last Logged Off Time - Win\Mac" ID="6" EvaluationPeriod="PT30M">ends of ranges of last system intervals in logged off state of power history</Property>
+		<Property Name="Power - Last Off Time - Win\Mac" ID="7" EvaluationPeriod="PT30M">ends of ranges of last system intervals in off state of power history</Property>
+		<Property Name="Power - Last Standby Time - Win\Mac" ID="8" EvaluationPeriod="PT30M">ends of ranges of last system intervals in standby state of power history</Property>
+		<Property Name="Power - Total Active Percentage - Win\Mac" ID="15" EvaluationPeriod="P2D">relative significance place 2 of ((((sum of lengths of ranges of system intervals whose (state of it = active state) of power history) / second) as floating point / ((sum of lengths of ranges of system intervals of power history) / second) as floating point) * 100)</Property>
+		<Property Name="Power - Total Idle Percentage- Win\Mac" ID="16" EvaluationPeriod="P2D">relative significance place 2 of ((((sum of lengths of ranges of system intervals whose (state of it = idle state) of power history) / second) as floating point / ((sum of lengths of ranges of system intervals of power history) / second) as floating point) * 100)</Property>
+		<Property Name="Power - Total Time Percentage- Win\Mac" ID="17" EvaluationPeriod="P2D">relative significance place 2 of ((((sum of lengths of ranges of system intervals whose (state of it = off state) of power history) / second) as floating point / ((sum of lengths of ranges of system intervals of power history) / second) as floating point) * 100)</Property>
+		<Property Name="Power - Total Monitor Off Percentage- Win\Mac" ID="18" EvaluationPeriod="P2D">relative significance place 2 of ((((sum of lengths of ranges of monitor intervals whose (state of it = monitor off state) of power history) / second) as floating point / ((sum of lengths of ranges of monitor intervals of power history) / second) as floating point) * 100)</Property>
+		<Property Name="Power - Total Logged Off Percentage- Win\Mac" ID="19" EvaluationPeriod="P2D">relative significance place 2 of ((((sum of lengths of ranges of system intervals whose (state of it = logged off state) of power history) / second) as floating point / ((sum of lengths of ranges of system intervals of power history) / second) as floating point) * 100)</Property>
+		<Property Name="Power - Yesterday Active Time - Win\Mac" ID="20" EvaluationPeriod="PT6H"><![CDATA[sum of lengths of (it * ((24 * hour) & (current date & (midnight & local time zone)))) of ranges whose (exists (it * ((24 * hour) & (current date & (midnight & local time zone))))) of system intervals whose (state of it = active state) of power history]]></Property>
+		<Property Name="Power - Yesterday Logged Off Time - Win\Mac" ID="21" EvaluationPeriod="PT6H"><![CDATA[sum of lengths of (it * ((24 * hour) & (current date & (midnight & local time zone)))) of ranges whose (exists (it * ((24 * hour) & (current date & (midnight & local time zone))))) of system intervals whose (state of it = logged off state) of power history]]></Property>
+		<Property Name="Power - Yesterday Monitor Off Time - Win\Mac" ID="22" EvaluationPeriod="PT6H"><![CDATA[sum of lengths of (it * ((24 * hour) & (current date & (midnight & local time zone)))) of ranges whose (exists (it * ((24 * hour) & (current date & (midnight & local time zone))))) of system intervals whose (state of it = monitor off state) of power history]]></Property>
+		<Property Name="Power - Yesterday Off Time - Win\Mac" ID="23" EvaluationPeriod="PT6H"><![CDATA[sum of lengths of (it * ((24 * hour) & (current date & (midnight & local time zone)))) of ranges whose (exists (it * ((24 * hour) & (current date & (midnight & local time zone))))) of system intervals whose (state of it = off state) of power history]]></Property>
+		<Property Name="Power - Yesterday Idle Time - Win\Mac" ID="24" EvaluationPeriod="PT6H"><![CDATA[sum of lengths of (it * ((24 * hour) & (current date & (midnight & local time zone)))) of ranges whose (exists (it * ((24 * hour) & (current date & (midnight & local time zone))))) of system intervals whose (state of it = idle state) of power history]]></Property>
+		<Property Name="Power - Current Monitor State - Win\Mac" ID="25" EvaluationPeriod="PT5M">state of current monitor interval of power history</Property>
+		<Property Name="Power - Current System State - Win\Mac" ID="26" EvaluationPeriod="PT5M">state of current system interval of power history</Property>
+	</Analysis>
+</BES>
