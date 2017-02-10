@@ -24,7 +24,7 @@
 			</Description>
 			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "1ECLI"="{pathname of file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) }"
 
-waithidden "{parameter "1ECLI"}" -diskac=15 -diskdc=5 -hibernateac=0 -hibernatedc=0 -monitorac=40 -monitordc=20 -standbyac=40 -standbydc=20</ActionScript>
+waithidden "{parameter "1ECLI"}" -diskac=15 -diskdc=5 -hibernateac=180 -hibernatedc=180 -monitorac=40 -monitordc=20 -standbyac=40 -standbydc=20</ActionScript>
 		</DefaultAction>
 	</Fixlet>
 </BES>
