@@ -53,5 +53,6 @@
 		<Property Name="Power - Yesterday's Monitor States - Win\Mac" ID="30" EvaluationPeriod="PT6H"><![CDATA[((range of it) * (((current date - 1*day) & (midnight & local time zone)) & (24 * hour)), state of it) of monitor intervals whose (exists ((range of it) * (((current date - 1*day) & (midnight & local time zone)) & (24 * hour)))) of power history]]></Property>
 		<Property Name="Power - Total Standby Percentage - Win\Mac" ID="31" EvaluationPeriod="P1D">relative significance place 2 of ((((sum of lengths of ranges of system intervals whose (state of it = standby state) of power history) / second) as floating point / ((sum of lengths of ranges of system intervals of power history) / second) as floating point) * 100)</Property>
 		<Property Name="Power - Yesterday Standby Time - Win\Mac" ID="32" EvaluationPeriod="PT6H"><![CDATA[sum of lengths of (it * ((24 * hour) & (current date & (midnight & local time zone)))) of ranges whose (exists (it * ((24 * hour) & (current date & (midnight & local time zone))))) of system intervals whose (state of it = standby state) of power history]]></Property>
+		<Property Name="Power - Total Tracked Time - Win\Mac" ID="33" EvaluationPeriod="P1D">sums of lengths of ranges of system intervals of power history</Property>
 	</Analysis>
 </BES>
