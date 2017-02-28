@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Analysis>
+		<Title>Power - Historical States - Win\Mac</Title>
+		<Description><![CDATA[<DIV class=subsection>This Analysis provides Power State information for supported platforms.</DIV>
+<P class=subsection>You must enable the Power History inspectors via the <STRONG>Fixlet</STRONG>: "Config - BigFix Power Tracking - Enable Inspectors - Windows" for this analysis to be relevant and report data. Data will only exist starting from the time the Power History inspectors have been enabled.</P>
+<P class=subsection>This Analysis provides total historical power state information. This contrasts with the Power -&nbsp;States - Win\Mac Analysis which just provides information from yesterday and today. This may return a lot of data.</P>
+<P class=subsection>The total power history goes back two weeks by default. There may be fewer than two weeks of history if you have only recently enabled the BigFix Power Management inspectors.</P>
+<P class=subsection>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>exists values whose (it = "1") of settings "_BESClient_PowerHistory_EnablePowerHistory" of client </Relevance>
+		<Source>Internal</Source>
+		<SourceReleaseDate>2017-02-27</SourceReleaseDate>
+		<Domain>BESC</Domain>
+		<Property Name="Power - All Power States - Win\Mac" ID="1" EvaluationPeriod="P1D"><![CDATA[(range of it, state of it) of system intervals whose (length of range of it > (1 * second)) of power history]]></Property>
+		<Property Name="Power - All Monitor States - Win\Mac" ID="2" EvaluationPeriod="P1D"><![CDATA[(range of it, state of it) of monitor intervals whose (length of range of it > (1 * second)) of power history]]></Property>
+	</Analysis>
+</BES>
