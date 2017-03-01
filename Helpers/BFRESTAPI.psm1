@@ -159,7 +159,14 @@ Function Invoke-BFSessionQuery {
         throw "Query returned an error: $($Response.BESAPI.Query.Error)"
     }
     
-    write-output $Response.BESAPI.Query.Result.Answer.'#Text'
+    if ($Response.besapi.query.result.tuple) {
+        foreach ($Tuple in $Response.besapi.Query.result.tuple) {
+            write-output (, @($tuple.Answer.'#Text'))
+        }
+    }
+    else {
+        write-output $Response.BESAPI.Query.Result.Answer.'#Text'
+    }
 }
 
 function Invoke-NullCoalescing {
