@@ -13,9 +13,11 @@ Now we must gather the power states from the endpoints. To do this simply enable
 The script itself takes a couple parameters:
 
 Resolution = The resolution of the analysis (default = 5 minutes)
+
 Days = The number of days of usage to analyze (default = 7 days)
 
 BigFix = FQDN of your BigFix Server
+
 Computer Group = Name of the Computer Group to limit results to
 
 Outfile = Name of the report to save
