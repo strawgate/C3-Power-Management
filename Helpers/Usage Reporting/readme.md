@@ -1,3 +1,11 @@
+## Overview
+
+This usage reporting using BigFix Power State data to analyze peak computer usage across groups of the organization. The idea is that, if we know when each computer is active or idle we can analyze that and tell at any time during the day how many total computers are active/idle and provide that data historically.
+
+[Click here to see a sample report!](http://c3.strawgate.com/Artifacts/Power%20Management/Sample%20Usage.html)
+
+## Getting Started
+
 ### Enable the Power Inspectors
 
 You first must instruct the BigFix agent to begin tracking power states. You can do this in the C3 Power Management site you can use the fixlet: Config - BigFix Power Tracking - Enable Inspectors - Windows
