@@ -11,78 +11,70 @@
 
 import-module .\BFRESTAPI.PSM1 -force
 
-function ConvertToCTime ([datetime]$InputEpoch) {
-    [datetime]$Epoch = '1970-01-01 00:00:00'
-    $Ctime = (New-TimeSpan -Start $Epoch -End $InputEpoch).TotalMilliseconds
-    return $Ctime
-}
-
-function translate-state {
+<#
+.Synopsis
+   Convert a datetime object to Unix Epoch 
+.DESCRIPTION
+   Takes a .Net Datetime object and converts it to unix epoch time.
+.EXAMPLE
+   ConvertTo-Epoch [datetime]::now
+.EXAMPLE
+   ConvertTo-Epoch [datetime]::today
+#>
+function ConvertTo-Epoch {
     param (
-        $state
+        [datetime]$InputEpoch
     )
-    
-    switch ($State) {
-        "idle" {return "idle" }
-        "standby" {return "standby" }
-        "off" {return "off"; break }
-        "active" {return "active" }
-        "inactive" {return "idle" }
-        "logged off" {return "idle" }
-        "invalid" {return "invalid" }
-        "on" {return "active" }
-    }
+
+    write-output ((New-TimeSpan -Start ([datetime]'1970-01-01 00:00:00') `
+                         -End ($InputEpoch).ToUniversalTime() `
+           ).TotalMilliseconds)
 }
 
-function parse-rawstates {
-    param (
-        [Parameter(ValueFromPipeline=$true)]
-        $RawState
-    )
-    begin {}
+<#
+#   Prepare Required Time Variables
+#>
 
-    process {
-        foreach ($State in $RawState) {
-
-            $Pattern = [regex]("(\w*), \( \( (\w*, \d* \w* \d* \d*:\d*:\d* -\d*) to (\w*, \d* \w* \d* \d*:\d*:\d* -\d*) \), (.*?) \)")
-    
-            $State -match ($Pattern) | out-null
-
-            return @{
-                "Computer" = $Matches[1]
-                "Start" = [datetime]$Matches[2]
-                "End" = [datetime]$Matches[3]
-                "State" = $Matches[4]
-            }
-        }
-    }
-    end {}
-}
-
-#$Days = 14
 $Minutes = $Days * 60 * 24
-
-#$Resolution = 60
-
 [datetime] $Start = [datetime]::Today.adddays(-1 * $Days)
 [datetime] $End = [datetime]::Today
+
+<#
+#   Query BigFix for Power Data
+#>
+
+write-host "Querying Power Data from BigFix"
 try {
-    $RawStates = Invoke-BFSessionQuery -Server $BigFix -Query "unique values of (it as string) of (name of computer of it, values of it) of results from (bes properties whose (name of it contains ""Power - All Power States - Win\Mac"")) of members of bes computer group whose (name of it is ""$ComputerGroup"")" -Credential $Credential -erroraction stop
+    $RawStates = Invoke-BFSessionQuery -Server $BigFix `
+                                        -Query "(item 0 of it, preceding text of first "" to "" of tuple string items 0 of item 1 of it, following text of first "" to "" of tuple string items 0 of item 1 of it, tuple string items 1 of item 1 of it) of (name of computer of it, values of it) of results from (bes properties whose (name of it contains ""Power - All Power States - Win\Mac"")) of members of bes computer group whose (name of it is ""$ComputerGroup"")" `
+                                        -Credential $Credential -erroraction stop
 } catch {
     write-error "Error connecting to BigFix"
     exit
 }
-#$RawStates = get-content ".\Input.txt"
 
-write-host "Parsing Power States"
-$ParsedStates = $RawStates | parse-rawstates
+<#
+#   Split up Tuple Data
+#>
+
+write-host "Parsing Power Data"
+$ParsedStates = $RawStates | % {write-output @{
+                "Computer" = $_[0]
+                "Start" = [datetime]$_[1]
+                "End" = [datetime]$_[2]
+                "State" = $_[3]
+            }}
 
 $Results = @()
 
-write-host "Loading Power State Array"
+
+<#
+#   Prepopulate array with entries
+#>
+
+write-host "Preparing Power Data Table"
 
 for ($Minute = 0; $Minute -lt $Minutes; $Minute += $Resolution) {
-#foreach ($Minute in 0 .. $Minutes) {
     $Results += new-object psobject -property @{
         "time" = $Minute
         "active" = 0
@@ -96,17 +88,19 @@ for ($Minute = 0; $Minute -lt $Minutes; $Minute += $Resolution) {
     }
 }
 
-write-host "Processing Power States"
+write-host "Processing Power Data"
 
-$Count = $ParsedStates.Count
+<#
+#   Process Power Data into Time Slices based on $Resolution
+#>
+
 $Number = 0
 
-#ParsedStates SHOULD be FASTER
 foreach ($State in $ParsedStates) {
     
     #Logging
     $Number++
-    if ($Number % 500 -eq 0) { write-host "Processing $Number of $Count" }
+    if ($Number % 500 -eq 0) { write-host "Processing $Number of $($ParsedStates.Count)" }
 
     #Range Limiting
     if ($State.end -lt $Start -or $State.start -gt $end) { continue }
@@ -126,17 +120,24 @@ foreach ($State in $ParsedStates) {
         $Results[$Minute / $Resolution]."$($State.state)" += 1
     }
 
-    
-
-    
 }
 
-write-host "Merging up Duplicate States"
+<#
+#   Merge Power Data States
+#  Specifically, merge Inactive + Logged Off -> Idle
+#  Also Merge On -> Active
+#>
+
+write-host "Merging duplicate States"
 for ($Index = 0; $index -lt $Results.count; $Index++) {
     $Results[$Index].idle += $Results[$Index].inactive + $results[$Index].'logged off'
     $Results[$Index].active += $Results[$Index].on
     $Results[$Index] = $Results[$Index] | Select-Object -Property * -ExcludeProperty inactive,'logged off',on
 }
+
+<#
+#   Prepare Data into JSON Format Required for Graphing
+#>
 
 write-host "Preparing JSON Output"
 # Merge for Graphing
@@ -146,10 +147,12 @@ $Standby = $null
 $Off = $null
 
 foreach ($Result in $Results) {
-    $Active += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.active)
-    $Idle += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.Idle)
-    $Standby += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.Standby)
-    $Off += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.Off)
+    $TimeStamp = ConvertTo-Epoch $Start.AddMinutes($Result.Time)
+
+    $Active += , @($TimeStamp, $Result.active)
+    $Idle += , @($TimeStamp, $Result.Idle)
+    $Standby += , @($TimeStamp, $Result.Standby)
+    $Off += , @($TimeStamp, $Result.Off)
 }
 
 $JSON = @(
@@ -159,12 +162,21 @@ $JSON = @(
             @{"key" = "Off"; "values" = ($Off)}
         )
 
+<#
+#   Prepare Output
+#>
 $RawJSON = convertto-json $JSON -depth 10 -compress
+
+<#
+#   Use NewChartInput.html as graph template
+#>
 
 $MyChart = get-content .\NewChartInput.html
 
 $MyChart = $MyChart -replace ("!ReplaceMe!",$RawJSON)
 
+write-host "Saving to $Outfile"
+
 $MyChart | Set-content ".\$OutFile"
 
-#$Results | export-csv output1.csv -NoTypeInformation
+Invoke-Item ".\$OutFile"
