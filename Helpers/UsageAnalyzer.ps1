@@ -146,10 +146,10 @@ $Standby = $null
 $Off = $null
 
 foreach ($Result in $Results) {
-    $Active += , @((ConvertToCTime($Start.AddMinutes($Result.Time))), $Result.active)
-    $Idle += , @((ConvertToCTime($Start.AddMinutes($Result.Time))), $Result.Idle)
-    $Standby += , @((ConvertToCTime($Start.AddMinutes($Result.Time))), $Result.Standby)
-    $Off += , @((ConvertToCTime($Start.AddMinutes($Result.Time))), $Result.Off)
+    $Active += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.active)
+    $Idle += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.Idle)
+    $Standby += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.Standby)
+    $Off += , @((ConvertToCTime($Start.AddMinutes($Result.Time).touniversaltime())), $Result.Off)
 }
 
 $JSON = @(
