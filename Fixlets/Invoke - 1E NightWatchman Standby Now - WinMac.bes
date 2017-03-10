@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Invoke - 1E NightWatchman Standby Now - Win\Mac</Title>
+		<Description><![CDATA[<P>This Fixlet uses 1E NightWatchman to sleep the system.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>Windows of operating system or Mac of operating system</Relevance>
+		<Relevance>if (Windows of Operating System) then (exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry)) else (exists file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman")</Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-09-06</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
+
+if {Windows of Operating System}
+	wait "{parameter "1ECLI"}" -standbynow -CountdownSecs=90
+elseif {Mac of Operating System}
+	wait "{parameter "1ECLI"}" -standbynow CountdownSecs 90
+endif</ActionScript>
+			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>
+		</DefaultAction>
+	</Fixlet>
+</BES>
