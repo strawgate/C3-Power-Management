@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Config - 1E NightWatchman Power Scheme - Set to Short Presentation Mode - Win\Mac</Title>
+		<Description><![CDATA[<P>This Fixlet configures 1E to enforce a Presentation power scheme. Computer will turn off monitor after 2 hours.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>Windows of operating system or Mac of operating system</Relevance>
+		<Relevance>if (Windows of Operating System) then (exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry)) else (exists file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman")</Relevance>
+		<Relevance>if (Windows of Operating System) then (
+exists (values "DiskAC" whose (it != 15) of it; values "DiskDC" whose (it != 5) of it; values "hibernateac" whose (it != 180) of it; values "hibernatedc" whose (it != 180) of it; values "monitorac" whose (it != 180) of it; values "monitordc" whose (it != 180) of it; values "standbyac" whose (it != 200) of it; values "standbydc" whose (it != 200) of it) of key "PowerSettings" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry
+)
+else (exists
+(integers "DiskAC" whose (it != 15) of it; integers "DiskDC" whose (it != 5) of it; integers "HibernateAC" whose (it != 180) of it; integers "HibernateDC" whose (it != 180) of it; integers "MonitorAC" whose (it != 180) of it; integers "MonitorDC" whose (it != 180) of it; integers "StandbyAC" whose (it != 200) of it; integers "StandbyDC" whose (it != 200) of it) of dictionary "PowerSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist"
+)</Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-09-06</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
+
+if {Windows of Operating System}
+	wait "{parameter "1ECLI"}" -diskac=15 -diskdc=5 -hibernateac=180 -hibernatedc=180 -monitorac=180 -monitordc=180 -standbyac=200 -standbydc=200
+elseif {Mac of Operating System}
+	wait "{parameter "1ECLI"}" -s diskac 15 diskdc 5 hibernateac 180 hibernatedc 180 monitorac 180 monitordc 180 standbyac 200 standbydc 200
+endif</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>

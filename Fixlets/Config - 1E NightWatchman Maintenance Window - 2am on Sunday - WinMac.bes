@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Config - 1E NightWatchman Maintenance Window - 2am on Sunday - Win\Mac</Title>
+		<Description><![CDATA[<P>This Fixlet configures 1E to wake the machine into a maintenance window at 2am on Sunday for&nbsp;1 hour. At the end of the maintenance window the computer will be left to do whatever it is normally configured to do.</P>
+<P>The monitor will be not be turned on when this occurs.</P>
+<P>This will overwrite any previously configured Maintenance Windows.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>Windows of operating system or Mac of operating system</Relevance>
+		<Relevance>if (Windows of Operating System) then (exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry)) else (exists file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman")</Relevance>
+		<Relevance>if (windows of Operating System) then (
+exists (values "TurnOnMonitor" whose (it != "OFF") of it;
+values "SaturdayCloseAction" whose (it != "Nothing") of it; 
+values "SundayCloseAction" whose (it != "Nothing") of it;
+values "SaturdayOpenTime" whose (it != "02:00") of it;
+values "SundayOpenTime" whose (it != "02:00") of it;  
+values "SaturdayPeriodMins" whose (it != "60") of it;
+values "SundayPeriodMins" whose (it != "60") of it)
+of (keys "MaintenanceWindow" of keys "1E\NightWatchman" of keys "HKEY_LOCAL_MACHINE\Software" of native registry)
+)
+else (
+exists (strings "Action" whose (it != "Nothing") of it; strings "OpenAt" whose (it != "02:00") of it; strings "OpenForMins" whose (it != "60") of it) of dictionaries whose (string "Day" of it = "Saturday") of values of arrays "MaintenanceWindowSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist"
+)</Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-09-06</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "Setting"="maintenancewnd"
+
+parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
+
+if {Windows of Operating System}
+	
+
+	wait "{parameter "1ECLI"}" -{parameter "Setting"}="monitorstate=off|SUN(02:00,60,0)"
+
+elseif {Mac of Operating System}
+
+
+	wait "{parameter "1ECLI"}" -{parameter "Setting"} sat=02:00,60,0
+
+endif</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>

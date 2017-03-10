@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Config - 1E NightWatchman Scheduled Actions - Reboot at 2am on All Days - Win\Mac</Title>
+		<Description><![CDATA[<P>This Fixlet configures 1E to reboot the machine at 8pm each night.</P>
+<P>This will overwrite any previously configured scheduled actions.</P>
+<P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
+		<Relevance>Windows of operating system or Mac of operating system</Relevance>
+		<Relevance>if (Windows of Operating System) then (exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry)) else (exists file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman")</Relevance>
+		<Relevance>if (windows of operating system) then (
+/* Days */ (set of (preceding text of first "Logoff" of it) of  names of values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) != set of ("Monday";"Tuesday";"Wednesday";"Thursday";"Friday";"Saturday";"Sunday")
+or
+/* Hours */ exists (values whose (name of it ends with "Hour") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 2)
+or
+/* Minutes */ exists (values whose (name of it ends with "Minutes") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it != 0)
+or
+/* Logoff Actions */ exists (values whose (name of it ends with "LogoffAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it as string as uppercase != "ACTIVE")
+or
+exists (values whose (name of it ends with "PowerdownAction") of key "ScheduledActions" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry) whose (it as string as uppercase != "REBOOT")
+) else (true)</Relevance>
+		<Relevance>if (Mac of Operating System) then (
+exists (
+strings "Action" whose (it != "Reboot") of it;
+strings "LogOff" whose (it != "Active") of it;
+strings "Time" whose (it != "02:00") of it;
+elements of (set of (strings "Day" of it) - (set of ("Monday";"Tuesday";"Wednesday";"Thursday";"Friday";"Saturday";"Sunday"))))
+ of (dictionaries of values of array "ScheduledActions" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist")
+) else (true)</Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-09-06</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "Setting"="scheduledactions"
+
+parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
+
+if {Windows of Operating System}
+	
+	parameter "Value"="ALLDAYS(2:00,REBOOT,ACTIVE)"
+
+	wait "{parameter "1ECLI"}" -{parameter "Setting"}="{parameter "Value"}"
+
+elseif {Mac of Operating System}
+
+	parameter "Value"="ALLDAYS=2:00,REBOOT,ACTIVE"
+
+	wait "{parameter "1ECLI"}" -{parameter "Setting"} {parameter "Value"}
+
+endif</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>
