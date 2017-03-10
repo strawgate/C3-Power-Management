@@ -2,12 +2,12 @@
 
 <BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
 	<Fixlet>
-		<Title>Config - 1E NightWatchman Log Off Action - Active - Win\Mac</Title>
-		<Description><![CDATA[<P>This Fixlet configures how 1E responds to a user being logged in during its shutdown period.</P>
+		<Title>Config - 1E NightWatchman Countdown Timer - 5 Minutes - Win\Mac</Title>
+		<Description><![CDATA[<P>This Fixlet sets the number of seconds before a scheduled power event that a message box will be presented.</P>
 <P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
 		<Relevance>Windows of operating system or Mac of operating system</Relevance>
 		<Relevance>if (Windows of Operating System) then (exists file "NightWatchman.exe" of folder (preceding text of last "\" of (it as string) of value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry)) else (exists file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman")</Relevance>
-		<Relevance>if (Windows of Operating System) then (value "LogOffAction" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string as uppercase != "ACTIVE") else (exists strings "LogOffAction" whose (it as uppercase != "ACTIVE") of dictionary "ShutdownSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist")</Relevance>
+		<Relevance>if (Windows of Operating System) then (value "CountdownSecs" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string != "300") else (exists integer "CountdownSecs" whose (it != 300) of dictionary "CountdownDlgSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist")</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>
@@ -22,8 +22,8 @@
 				<Link>here</Link>
 				<PostLink> to deploy this action.</PostLink>
 			</Description>
-			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "Setting"="logoffaction"
-parameter "Value"="ACTIVE"
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "Setting"="CountdownSecs"
+parameter "Value"="300"
 
 parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
 

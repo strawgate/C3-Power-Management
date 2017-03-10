@@ -20,7 +20,7 @@ values "SundayPeriodMins" whose (it != "60") of it)
 of (keys "MaintenanceWindow" of keys "1E\NightWatchman" of keys "HKEY_LOCAL_MACHINE\Software" of native registry)
 )
 else (
-exists (strings "Action" whose (it != "Nothing") of it; strings "OpenAt" whose (it != "02:00") of it; strings "OpenForMins" whose (it != "60") of it) of dictionaries whose (string "Day" of it = "Saturday") of values of arrays "MaintenanceWindowSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist"
+(exists (strings "Action" whose (it != "Nothing") of it; strings "OpenAt" whose (it != "02:00") of it; strings "OpenForMins" whose (it != "60") of it) of dictionaries whose (string "Day" of it = "Saturday") of values of arrays "MaintenanceWindowSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist") or (number of values of array "MaintenanceWindowSettings" of dictionary of file "/Library/Preferences/com.1E.NightWatchman.plist" != 1)
 )</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>

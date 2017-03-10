@@ -31,7 +31,7 @@ parameter "1ECLI"="{if (windows of operating system) then (pathname of file "Nig
 if {Windows of Operating System}
 	wait "{parameter "1ECLI"}" -{parameter "Setting"}={parameter "Value"}
 elseif {Mac of Operating System}
-	wait "{parameter "1ECLI"}" -s {parameter "Setting"} {parameter "Value"}
+	wait "{parameter "1ECLI"}" -s {parameter "Setting"}
 endif</ActionScript>
 		</DefaultAction>
 	</Fixlet>
