@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Config - Wake on Lan - Enable - Mac</Title>
+		<Description><![CDATA[<P>This enables Wake on Lan on a Mac.</P>
+<P>For general information or to report issues with C3 Inventory content please visit GitHub here: <A href="https://github.com/strawgate/C3-Inventory">https://github.com/strawgate/C3-Inventory</A></P>]]></Description>
+		<Relevance>mac of operating system</Relevance>
+		<Relevance>exists dictionaries whose (not exists integers "Wake On LAN" of it or exists integers "Wake On LAN" whose (it != 1) of it) of values of entries of dictionaries "Custom Profile" of dictionaries of files "/Library/Preferences/SystemConfiguration/com.apple.PowerManagement.plist"</Relevance>
+		<Category>BIOS Settings</Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2016-04-29</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to enable Wake On LAN on a Mac.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">wait pmset -a womp 1
+</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>
