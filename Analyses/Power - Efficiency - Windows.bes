@@ -13,8 +13,8 @@
 		<SourceReleaseDate>2016-09-23</SourceReleaseDate>
 		<Domain>BESC</Domain>
 		<Property Name="Power - Wake Requests - Windows" ID="2" EvaluationPeriod="P1D">(it, next line of it) of lines containing "[" of file "energy-requests.txt" of folder "temp" of windows folder</Property>
-		<Property Name="Power - Efficiency Errors - Windows" ID="3" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Error']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
-		<Property Name="Power - Efficiency Warnings - Windows" ID="4" EvaluationPeriod="P1D">unique values of (it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Warning']/Description" of xml document of file "energy-report.xml" of folder "temp" of windows folder</Property>
+		<Property Name="Power - Efficiency Errors - Windows" ID="3" EvaluationPeriod="P1D"><![CDATA[((concatenation ", " of (it & ": ") of (selects "Details/Detail/Value" of it as text)) & select "Description" of it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Error']" of xml document of file "energy-report.xml" of folder "temp" of windows folder]]></Property>
+		<Property Name="Power - Efficiency Warnings - Windows" ID="4" EvaluationPeriod="P1D"><![CDATA[unique values of ((concatenation ", " of (it & ": ") of (selects "Details/Detail/Value" of it as text)) & select "Description" of it as text) of selects "/EnergyReport/Troubleshooter/AnalysisLog/LogEntry[Severity='Warning']" of xml document of file "energy-report.xml" of folder "temp" of windows folder]]></Property>
 		<Property Name="Power - Last Efficiency Check - Windows" ID="6" EvaluationPeriod="P1D">modification time of file "energy-report.xml" of folder "temp" of windows folder</Property>
 	</Analysis>
 </BES>
