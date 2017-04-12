@@ -36,7 +36,9 @@ else (
 				<Link>here</Link>
 				<PostLink> to deploy this action.</PostLink>
 			</Description>
-			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">parameter "Setting"="maintenancewnd"
+
+parameter "1ECLI"="{if (windows of operating system) then (pathname of file "NightWatchman.exe" of folder (value "InstallationDirectory" of key "1E\NightWatchman" of key "HKEY_LOCAL_MACHINE\Software" of native registry as string)) else (pathname of file "nightwatchman" of folder "/Library/Application Support/1E/NightWatchman") }"
 
 if {Windows of Operating System}
 	
