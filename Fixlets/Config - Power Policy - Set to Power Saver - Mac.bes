@@ -24,7 +24,7 @@
 			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">// Enter your action script here
 
   wait pmset -c displaysleep 20
-  wait pmset -b displaysleep 3
+  wait pmset -b displaysleep 5
   wait pmset -c disksleep 30
   wait pmset -b disksleep 15
   wait pmset -c sleep 60

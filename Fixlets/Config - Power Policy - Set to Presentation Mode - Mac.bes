@@ -25,10 +25,10 @@
 
   wait pmset -c displaysleep 0
   wait pmset -b displaysleep 0
-  wait pmset -c disksleep 0
+  wait pmset -c disksleep 15
   wait pmset -b disksleep 15
   wait pmset -c sleep 0
-  wait pmset -b sleep 15
+  wait pmset -b sleep 0
 </ActionScript>
 		</DefaultAction>
 	</Fixlet>

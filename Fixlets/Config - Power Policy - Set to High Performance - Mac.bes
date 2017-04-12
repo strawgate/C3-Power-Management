@@ -23,12 +23,12 @@
 			</Description>
 			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">// Enter your action script here
 
-  wait pmset -c displaysleep 20
-  wait pmset -b displaysleep 5
+  wait pmset -c displaysleep 45
+  wait pmset -b displaysleep 30
   wait pmset -c disksleep 30
   wait pmset -b disksleep 20
   wait pmset -c sleep 60
-  wait pmset -b sleep 15</ActionScript>
+  wait pmset -b sleep 45</ActionScript>
 			<SuccessCriteria Option="RunToCompletion"></SuccessCriteria>
 		</DefaultAction>
 	</Fixlet>

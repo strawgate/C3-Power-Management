@@ -5,7 +5,7 @@
 		<Title>Config - Power Policy - Set to Presentation Mode - Windows</Title>
 		<Description><![CDATA[<P>Sets the power policy to presentation mode</P>
 <P>For general information or to report issues with C3 Power Management content please visit GitHub here: <A href="https://github.com/strawgate/C3-Power-Management">https://github.com/strawgate/C3-Power-Management</A></P>]]></Description>
-		<Relevance>true</Relevance>
+		<Relevance>windows of operating system</Relevance>
 		<Category></Category>
 		<Source>Internal</Source>
 		<SourceID></SourceID>
@@ -20,7 +20,7 @@
 				<Link>here</Link>
 				<PostLink> to deploy this action.</PostLink>
 			</Description>
-			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">// Enter your action script here</ActionScript>
+			<ActionScript MIMEType="application/x-Fixlet-Windows-Shell">wait powercfg -s "8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c"</ActionScript>
 		</DefaultAction>
 	</Fixlet>
 </BES>
