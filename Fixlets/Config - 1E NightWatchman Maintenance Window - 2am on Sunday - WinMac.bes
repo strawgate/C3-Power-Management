@@ -15,8 +15,8 @@ values "SaturdayCloseAction" whose (it != "Nothing") of it;
 values "SundayCloseAction" whose (it != "Nothing") of it;
 values "SaturdayOpenTime" whose (it != "02:00") of it;
 values "SundayOpenTime" whose (it != "02:00") of it;  
-values "SaturdayPeriodMins" whose (it != "60") of it;
-values "SundayPeriodMins" whose (it != "60") of it)
+values "SaturdayPeriodMins" whose (it as string != "60") of it;
+values "SundayPeriodMins" whose (it as string != "60") of it)
 of (keys "MaintenanceWindow" of keys "1E\NightWatchman" of keys "HKEY_LOCAL_MACHINE\Software" of native registry)
 )
 else (
